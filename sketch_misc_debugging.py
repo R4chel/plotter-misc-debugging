@@ -23,8 +23,6 @@ class MiscDebuggingSketch(vsketch.SketchClass):
     radius = vsketch.Param(-1, decimals=3, unit="in")
     num_layers = vsketch.Param(1)
     radius_interval = Interval("radius")
-    # radius_interval.init_min_parm()
-    # setattr(radius_interval, "test", vsketch.Param(1))
     radius_min = radius_interval.min_param
     radius_max = radius_interval.max_param
 
