@@ -10,13 +10,14 @@ class MiscDebuggingSketch(vsketch.SketchClass):
             self.min_name = f"min_value_{name}"
             setattr(self, self.min_name, vsketch.Param(1.0, decimals=3))
             self.max_value = vsketch.Param(100.0 )
+            self.min_param = vsketch.Param(1)
             self.test = 0
 
         def random_value(self, vsk):
             return vsk.random(getattr(self,self.min_name).value, self.max_value.value)
 
         def init_min_parm(self):
-            self.min_value = vsketch.Param(1)
+            return self.min_param
 
         
     # Sketch parameters:
@@ -29,7 +30,8 @@ class MiscDebuggingSketch(vsketch.SketchClass):
     num_layers = vsketch.Param(1)
     radius_interval = Interval("radius")
     # radius_interval.init_min_parm()
-    setattr(radius_interval, "test", vsketch.Param(1))
+    # setattr(radius_interval, "test", vsketch.Param(1))
+    radius_min = radius_interval.init_min_parm()
 
     def draw(self, vsk: vsketch.Vsketch) -> None:
         vsk.size(f"{self.height}x{self.width}", landscape=True, center=True)
@@ -40,7 +42,8 @@ class MiscDebuggingSketch(vsketch.SketchClass):
         layer = layers[math.floor(vsk.random(0, len(layers)))]
         vsk.stroke(layer)
         vsk.fill(layer)
-        vsk.circle(0, 0, self.radius_interval.random_value(vsk))
+        # vsk.circle(0, 0, self.radius_interval.random_value(vsk))
+        vsk.circle(0, 0, self.radius_interval.min_param.value)
 
     def finalize(self, vsk: vsketch.Vsketch) -> None:
         vsk.vpype("linemerge linesimplify reloop linesort")
