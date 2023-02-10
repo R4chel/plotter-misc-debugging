@@ -20,7 +20,7 @@ class MiscDebuggingSketch(vsketch.SketchClass):
         layer = layers[math.floor(vsk.random(0, len(layers)))]
         vsk.stroke(layer)
         vsk.fill(layer)
-        vsk.circle(0, 0, self.radius, mode="radius")
+        vsk.circle(0, 0, self.radius*2)
 
     def finalize(self, vsk: vsketch.Vsketch) -> None:
         vsk.vpype("linemerge linesimplify reloop linesort")
