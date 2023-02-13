@@ -8,10 +8,10 @@ class MiscDebuggingSketch(vsketch.SketchClass):
     width = vsketch.Param(5., decimals=2, unit="in")
     height = vsketch.Param(3., decimals=2, unit="in")
     pen_width = vsketch.Param(0.7, decimals=3, unit="mm")
-    rect_height = vsketch.Param(-1, decimals=3, unit="in")
-    rect_width = vsketch.Param(-2, decimals=3, unit="in")
-    tr = vsketch.Param(0.2,decimals=1,unit="in")
-    bl = vsketch.Param(0.2,decimals=1,unit="in")
+    rect_height = vsketch.Param(1, decimals=3, unit="in")
+    rect_width = vsketch.Param(-1, decimals=3, unit="in")
+    tr = vsketch.Param(-4.5,decimals=1,unit="in")
+    bl = vsketch.Param(0.1,decimals=1,unit="in")
     num_layers = vsketch.Param(1)
 
     def draw(self, vsk: vsketch.Vsketch) -> None:
